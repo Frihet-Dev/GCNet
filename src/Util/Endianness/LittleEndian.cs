@@ -21,7 +21,7 @@ namespace GCNet.Util.Endianness
     /// <summary>
     /// Provides handling functions for little endian data.
     /// </summary>
-    static class LittleEndian
+    internal static class LittleEndian
     {
         /// <summary>
         /// Converts 2 bytes from an array of bytes to a 16-bit integer at a specified index.
@@ -56,7 +56,7 @@ namespace GCNet.Util.Endianness
         /// <returns>The little endian representation of the integer in bytes.</returns>
         public static byte[] GetBytes(short int16)
         {
-            byte[] bytes = new byte[sizeof(short)];
+            var bytes = new byte[sizeof(short)];
 
             bytes[0] = (byte)(int16);
             bytes[1] = (byte)(int16 >> 8);
@@ -71,7 +71,7 @@ namespace GCNet.Util.Endianness
         /// <returns>The little endian representation of the integer in bytes.</returns>
         public static byte[] GetBytes(int int32)
         {
-            byte[] bytes = new byte[sizeof(int)];
+            var bytes = new byte[sizeof(int)];
 
             bytes[0] = (byte)(int32);
             bytes[1] = (byte)(int32 >> 8);

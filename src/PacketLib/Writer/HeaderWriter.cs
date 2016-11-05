@@ -23,7 +23,7 @@ namespace GCNet.PacketLib.Writer
     /// <summary>
     /// Represents a packet writer for header data.
     /// </summary>
-    class HeaderWriter : BaseWriter
+    internal sealed class HeaderWriter : BaseWriter
     {
         /// <summary>
         /// Gets the current header data.

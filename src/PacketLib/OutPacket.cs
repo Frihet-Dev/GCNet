@@ -16,6 +16,7 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 //-----------------------------------------------------------------------
 
+using System.Collections.Generic;
 using GCNet.CoreLib;
 using GCNet.PacketLib.Compression;
 using GCNet.PacketLib.Writer;
@@ -27,7 +28,7 @@ namespace GCNet.PacketLib
     /// <summary>
     /// Represents an outgoing packet.
     /// </summary>
-    public class OutPacket
+    public sealed class OutPacket
     {
         /// <summary>
         /// Gets the packet buffer of the current outgoing packet.
@@ -78,7 +79,7 @@ namespace GCNet.PacketLib
         /// <param name="auth">The auth session being used.</param>
         /// <param name="partialHeader">The outer packet header, except for the 2 first bytes (packet size).</param>
         /// <returns>The assembled packet, ready to be sent.</returns>
-        private byte[] AssemblePacket(byte[] payloadData, CryptoSession crypto, AuthSession auth, byte[] partialHeader)
+        private static byte[] AssemblePacket(byte[] payloadData, CryptoSession crypto, AuthSession auth, byte[] partialHeader)
         {
             PayloadReader reader = new PayloadReader(payloadData, 6);
             if (reader.ReadBool())
@@ -106,9 +107,9 @@ namespace GCNet.PacketLib
         /// Corrects the size contained in the payload data.
         /// </summary>
         /// <param name="payloadData">The raw payload data.</param>
-        private static void FixSize(byte[] payloadData)
+        private static void FixSize(IList<byte> payloadData)
         {
-            byte[] dataSizeBytes = BigEndian.GetBytes(payloadData.Length - 10);
+            byte[] dataSizeBytes = BigEndian.GetBytes(payloadData.Count - 10);
 
             payloadData[2] = dataSizeBytes[0];
             payloadData[3] = dataSizeBytes[1];

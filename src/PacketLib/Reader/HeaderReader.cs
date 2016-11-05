@@ -23,7 +23,7 @@ namespace GCNet.PacketLib.Reader
     /// <summary>
     /// Represents a packet reader for header data.
     /// </summary>
-    class HeaderReader : BaseReader
+    internal class HeaderReader : BaseReader
     {
         /// <summary>
         /// Initializes a new instance of HeaderReader using the specified data.

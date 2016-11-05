@@ -48,10 +48,9 @@ namespace GCNet.CoreLib
         public static byte[] IV()
         {
             byte[] outputIV = new byte[8];
-            byte ivByte;
 
             Random random = new Random();
-            ivByte = (byte)random.Next(0x00, 0xFF);
+            var ivByte = (byte)random.Next(0x00, 0xFF);
 
             for (int i = 0; i < outputIV.Length; i++)
             {

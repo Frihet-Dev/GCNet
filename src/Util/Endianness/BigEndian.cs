@@ -21,7 +21,7 @@ namespace GCNet.Util.Endianness
     /// <summary>
     /// Provides handling functions for big endian data.
     /// </summary>
-    static class BigEndian
+    internal static class BigEndian
     {
         /// <summary>
         /// Converts 2 bytes from an array of bytes to a 16-bit integer at a specified index.
@@ -74,7 +74,7 @@ namespace GCNet.Util.Endianness
         /// <returns>The big endian representation of the integer in bytes.</returns>
         public static byte[] GetBytes(short int16)
         {
-            byte[] bytes = new byte[sizeof(short)];
+            var bytes = new byte[sizeof(short)];
 
             bytes[0] = (byte)(int16 >> 8);
             bytes[1] = (byte)(int16);
@@ -89,7 +89,7 @@ namespace GCNet.Util.Endianness
         /// <returns>The big endian representation of the integer in bytes.</returns>
         public static byte[] GetBytes(int int32)
         {
-            byte[] bytes = new byte[sizeof(int)];
+            var bytes = new byte[sizeof(int)];
 
             bytes[0] = (byte)(int32 >> 24);
             bytes[1] = (byte)(int32 >> 16);
@@ -106,7 +106,7 @@ namespace GCNet.Util.Endianness
         /// <returns>The big endian representation of the integer in bytes.</returns>
         public static byte[] GetBytes(long int64)
         {
-            byte[] bytes = new byte[sizeof(long)];
+            var bytes = new byte[sizeof(long)];
 
             bytes[0] = (byte)(int64 >> 56);
             bytes[1] = (byte)(int64 >> 48);

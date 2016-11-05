@@ -24,7 +24,7 @@ namespace GCNet.CoreLib
     /// <summary>
     /// Handles MD5 HMAC generation.
     /// </summary>
-    static class MD5Hmac
+    internal static class MD5Hmac
     {
         /// <summary>
         /// Computes the HMAC for the specified data using the given key and size.

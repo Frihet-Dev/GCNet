@@ -25,7 +25,7 @@ namespace GCNet.PacketLib
     /// <summary>
     /// Represents an incoming packet.
     /// </summary>
-    public class InPacket
+    public sealed class InPacket
     {
         /// <summary>
         /// Gets the (decrypted and uncompressed) payload data of the current packet.

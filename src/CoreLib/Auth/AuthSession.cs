@@ -24,7 +24,7 @@ namespace GCNet.CoreLib
     /// <summary>
     /// Represents a packet authentication session.
     /// </summary>
-    public class AuthSession
+    public sealed class AuthSession
     {
         /// <summary>
         /// Gets the current session's HMAC key.
