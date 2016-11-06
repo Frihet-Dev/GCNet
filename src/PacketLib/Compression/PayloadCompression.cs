@@ -23,7 +23,7 @@ namespace GCNet.PacketLib.Compression
     /// <summary>
     /// Handles packet payload compression.
     /// </summary>
-    static class PayloadCompression
+    internal static class PayloadCompression
     {
         /// <summary>
         /// Compresses the given payload data.
@@ -34,7 +34,7 @@ namespace GCNet.PacketLib.Compression
         {
             byte[] innerHeader = Sequence.ReadBlock(payload, 0, 11);
             byte[] uncompressedData = Sequence.ReadBlock(payload, 11, payload.Length - 11);
-            byte[] end = new byte[3];
+            var end = new byte[3];
 
             byte[] compressedData = ZLib.CompressData(uncompressedData);
             

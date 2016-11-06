@@ -23,12 +23,12 @@ namespace GCNet.CoreLib
     /// <summary>
     /// Handles DES encryption operations.
     /// </summary>
-    static class DESEncryption
+    internal static class DesEncryption
     {
         /// <summary>
         /// Gets the cryptography provider used in the Grand Chase's encryption operations.
         /// </summary>
-        private static DESCryptoServiceProvider DESProvider { get; } = new DESCryptoServiceProvider()
+        private static DESCryptoServiceProvider DesProvider { get; } = new DESCryptoServiceProvider()
         {
             Mode = CipherMode.CBC,
             Padding = PaddingMode.None
@@ -43,7 +43,7 @@ namespace GCNet.CoreLib
         /// <returns>The encrypted data.</returns>
         public static byte[] EncryptData(byte[] data, byte[] iv, byte[] key)
         {
-            ICryptoTransform encryptor = DESProvider.CreateEncryptor(key, iv);
+            ICryptoTransform encryptor = DesProvider.CreateEncryptor(key, iv);
             return encryptor.TransformFinalBlock(data, 0, data.Length);
         }
 
@@ -56,7 +56,7 @@ namespace GCNet.CoreLib
         /// <returns>The decrypted data.</returns>
         public static byte[] DecryptData(byte[] data, byte[] iv, byte[] key)
         {
-            ICryptoTransform decryptor = DESProvider.CreateDecryptor(key, iv);
+            ICryptoTransform decryptor = DesProvider.CreateDecryptor(key, iv);
             return decryptor.TransformFinalBlock(data, 0, data.Length);
         }
     }

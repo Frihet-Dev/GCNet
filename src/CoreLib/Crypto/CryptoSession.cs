@@ -24,7 +24,7 @@ namespace GCNet.CoreLib
     /// <summary>
     /// Represents a packet encryption session.
     /// </summary>
-    public class CryptoSession
+    public sealed class CryptoSession
     {
         /// <summary>
         /// Gets the current session's encryption key.
@@ -59,7 +59,7 @@ namespace GCNet.CoreLib
         public byte[] EncryptPacket(byte[] payload, byte[] iv)
         {
             byte[] paddedData = PadData(payload);
-            return DESEncryption.EncryptData(paddedData, iv, Key);
+            return DesEncryption.EncryptData(paddedData, iv, Key);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace GCNet.CoreLib
             byte[] iv = Sequence.ReadBlock(packetBuffer, 8, 8);
             byte[] encryptedData = Sequence.ReadBlock(packetBuffer, 16, packetBuffer.Length - 10 - 16);
 
-            byte[] decryptedData = DESEncryption.DecryptData(encryptedData, iv, Key);
+            byte[] decryptedData = DesEncryption.DecryptData(encryptedData, iv, Key);
             int paddingLength = (decryptedData.Last() + 2);
 
             return Sequence.ReadBlock(decryptedData, 0, decryptedData.Length - paddingLength);

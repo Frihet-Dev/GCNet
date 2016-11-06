@@ -24,7 +24,7 @@ namespace GCNet.PacketLib.Compression
     /// <summary>
     /// Handles ZLib compression operations.
     /// </summary>
-    static class ZLib
+    internal static class ZLib
     {
         /// <summary>
         /// Compresses the specified block of data.

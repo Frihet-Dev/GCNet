@@ -23,7 +23,7 @@ namespace GCNet.PacketLib.Writer
     /// <summary>
     /// Represents the base class for the packet writers.
     /// </summary>
-    public class BaseWriter
+    public abstract class BaseWriter
     {
         /// <summary>
         /// Gets or sets the current data being written.

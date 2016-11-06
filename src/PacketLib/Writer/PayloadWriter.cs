@@ -26,14 +26,8 @@ namespace GCNet.PacketLib
     /// <summary>
     /// Represents a packet writer for payload data.
     /// </summary>
-    public class PayloadWriter : BaseWriter
+    public sealed class PayloadWriter : BaseWriter
     {
-        /// <summary>
-        /// Initializes a new instance of PayloadWriter.
-        /// </summary>
-        public PayloadWriter() { }
-
-
         /// <summary>
         /// Gets the current payload data.
         /// </summary>
